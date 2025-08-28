@@ -7,9 +7,12 @@ namespace WebApiTesting.APIs.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        public string Index()
+        [HttpGet("index/{guessedNumber}")]
+        public string Index(int guessedNumber)
         {
-            return "Hello World!";
+           if(guessedNumber<100) return "Wrong! Try a bigger number.";
+           else if(guessedNumber > 100) return "Wrong! Try a smaller number.";
+           else  return "You guessed Correct Number!";
         }
     }
 }
